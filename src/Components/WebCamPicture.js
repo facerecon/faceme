@@ -34,7 +34,7 @@ export default class WebCamPicure extends Component {
           width={350}
           videoConstraints={videoConstraints}
         />
-        <img src="/img/cameraIcon.png" alt="Take Pic button here" height={100}
+        <img src="cam-icon.jpg" alt="Take Pic button here" height={100}
           onClick={this.capture}
         />
       </div>

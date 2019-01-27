@@ -19,12 +19,12 @@ const params = {
 };
 
 export default (imgurl) => {
-    var imageUrl = "./base1.jpg"; 
+    var imageUrl = imgurl; 
 
     const options = {
         uri: uriBase,
         qs: params,
-        body: '{"url":"./'+ imageUrl + '"}',
+        body: '{"url": ' + '"' + imageUrl + '"}',
         headers: {
             'Content-Type': 'application/json',
             'Ocp-Apim-Subscription-Key' : subscriptionKey
