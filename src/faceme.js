@@ -39,7 +39,8 @@ export default (imgurl) => {
         }
         let jsonResponse = JSON.stringify(JSON.parse(body), null, '  ');
         console.log('JSON Response\n');
-        console.log(jsonResponse);
+        // console.log(jsonResponse);
+        return jsonResponse;
       });
 }
 
