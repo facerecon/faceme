@@ -23,6 +23,13 @@ export default class WebCamPicure extends Component {
     this.props.landmarkPicture(imageSrc);
   };
 
+  loopme = () => {
+    setTimeout(10000)
+    new Promise((resolve, reject) =>
+      resolve(this.capture)
+    ).then(resolve => console.log(resolve))
+  }
+
   render() {
     return (
       <div className="App" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -35,8 +42,11 @@ export default class WebCamPicure extends Component {
           videoConstraints={videoConstraints}
         />
         <img src="cam-icon.jpg" alt="Take Pic button here" height={100}
+
           onClick={this.capture}
         />
+
+        
       </div>
     );
   }

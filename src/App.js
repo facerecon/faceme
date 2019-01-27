@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import ImageUploader from "react-images-upload";
-// import WebCamPicture from './Components/WebCamPicture';
+import WebCamPicture from './Components/WebCamPicture';
 
 const request = require('request');
 
@@ -26,7 +26,8 @@ class App extends Component {
     this.state = {
       pictures: [],
       link: "",
-      baseObject: ""
+      baseObject: "",
+      dumpImg: null
     };
     this.onDrop = this.onDrop.bind(this);
     this.handleLinkChange = this.handleLinkChange.bind(this);
@@ -76,35 +77,38 @@ class App extends Component {
     console.log(this.state.baseObject)
   }
 
-  // async componentDidMount() {
-  //   const testImageHTML = document.getElementById('test');
-  //   this.drawHTMLImage(this.canvas.current,testImageHTML,296,296);
-  // }
+  async componentDidMount() {
+    const testImageHTML = document.getElementById('test');
+    this.drawHTMLImage(this.canvas.current,testImageHTML,296,296);
+  }
 
-  // drawHTMLImage(canvas,image,width,height){
-  //   const ctx = canvas.getContext("2d");
-  //   ctx.drawImage(image,0,0,width,height);
-  // }
+  drawHTMLImage(canvas,image,width,height){
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(image,0,0,width,height);
+  }
 
-  // landmarkWebCamPicture = (picture) => {
-  //   const ctx = this.canvasPicWebCam.current.getContext("2d");
-  //   var image = new Image();
-  //   image.onload = async () => {
-  //     ctx.drawImage(image,0,0);
-  //   };
-  //   image.src = picture;
-  // }
+  landmarkWebCamPicture = (picture) => {
+    const ctx = this.canvasPicWebCam.current.getContext("2d");
+    var image = new Image();
+    image.onload = async () => {
+      ctx.drawImage(image,0,0);
+    };
+    image.src = picture;
+    this.setState({dumpImg: image});
+    console.log(this.state.dumpImg);
+    
+  }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          {/* <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginTop: 100 }}>
-          <img id="test" src={testImage} alt="test" />
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginTop: 100 }}>
+          <img id="test" src={"base1.jpg"} alt="test" />
           <canvas ref={this.canvas} width={296} height={296} />
         </div>
         <WebCamPicture landmarkPicture={this.landmarkWebCamPicture} />
-        <canvas ref={this.canvasPicWebCam} width={350} height={350} /> */}
+        <canvas ref={this.canvasPicWebCam} width={350} height={350} />
           <div className="pa4-l">
             <form className="bg-light-red mw7 center pa4 br2-ns ba b--black-10">
               <fieldset className="cf bn ma0 pa0">
